@@ -16,7 +16,6 @@ export function shouldReply(config: Config, m: GroupMessage): boolean {
   return false
 }
 
-// Returns true if still on cooldown (caller should skip). When NOT on cooldown, stamps the time.
 export function onCooldown(store: Map<string, number>, m: GroupMessage, cooldownSeconds: number): boolean {
   if (cooldownSeconds <= 0) return false
   const key = `${m.channel}:${m.groupId}`

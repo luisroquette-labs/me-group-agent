@@ -27,11 +27,8 @@ export async function buildDailySummary(deps: {
   const { start, end } = dayBounds(deps.nowMs)
   const chatFn = deps.chatFn ?? chat
   for (const g of deps.groups) {
-    // scoped to THIS channel only — a telegram chat id and a whatsapp jid never collide,
-    // and summarizing the wrong channel's messages into a group would be a bug.
     const msgs = deps.repo.messagesOfDay(deps.channel.id, g, start, end)
     if (msgs.length === 0) continue
-    // ponytail: cap at the last 200 messages so a busy day can't blow up the token bill.
     const transcript = msgs.slice(-200).map((m) => `${m.userName}: ${m.text}`).join('\n')
     const summary = await chatFn({
       apiKey: deps.apiKey, model: deps.model,

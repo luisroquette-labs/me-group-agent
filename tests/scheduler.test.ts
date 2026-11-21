@@ -57,8 +57,8 @@ describe('startScheduler', () => {
     const cronImpl = { schedule: (expr: string, _fn: () => void) => { scheduled.push(expr); return { stop() {} } } } as any
     const cfg = parseConfig({ bot: { name: 'ME', persona: 'p' }, channels: { whatsapp: true, telegram: true },
       agenda: [
-        { cron: '0 11 * * *', text: 'bom dia', channel: 'telegram', groups: ['g1'] }, // resolvable
-        { cron: '0 12 * * *', text: 'ambígua', groups: ['g2'] },                       // ambiguous -> skipped
+        { cron: '0 11 * * *', text: 'bom dia', channel: 'telegram', groups: ['g1'] },
+        { cron: '0 12 * * *', text: 'ambígua', groups: ['g2'] },
       ],
       dailySummary: { enabled: true, cron: '0 21 * * *', channel: 'telegram', groups: ['g1'] },
       ia: { enabled: true } })

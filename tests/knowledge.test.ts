@@ -15,7 +15,6 @@ describe('keywords', () => {
 
 describe('searchKnowledge', () => {
   it('REGRESSÃO: matches by keyword, not the whole phrase', () => {
-    // the full user sentence is NOT a substring of any stored question
     const hits = searchKnowledge(kb, 'me diz por favor que horas começa hoje', 3)
     expect(hits[0].answer).toBe('A partir das 19h.')
   })

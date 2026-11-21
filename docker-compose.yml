@@ -1,5 +1,3 @@
-# Optional: most users should just `npm install && npm start` on the host.
-# Use this if you'd rather run the bot in a container.
 services:
   bot:
     build: .

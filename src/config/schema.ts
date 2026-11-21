@@ -32,7 +32,7 @@ export const configSchema = z.object({
     model: z.string().default('anthropic/claude-sonnet-5'),
     triggerOnQuestionMark: z.boolean().default(false),
     maxKbResults: z.number().int().positive().default(3),
-    cooldownSeconds: z.number().int().nonnegative().default(10),  // min seconds between AI replies per group (cost guard)
+    cooldownSeconds: z.number().int().nonnegative().default(10),
   }).default({}),
   agenda: z.array(z.object({
     cron: z.string().min(1), text: z.string().min(1),

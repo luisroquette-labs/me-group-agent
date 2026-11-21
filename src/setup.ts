@@ -95,10 +95,6 @@ export async function runWizard(promptImpl: typeof prompts = prompts): Promise<v
   let env = ''
   if (a.openrouterKey) env += `OPENROUTER_API_KEY=${a.openrouterKey}\n`
   if (a.telegramToken) env += `TELEGRAM_BOT_TOKEN=${a.telegramToken}\n`
-  // Always ensure ./.env exists as a file (not a directory). Docker's bind mount
-  // in docker-compose.yml auto-creates ./.env as a directory if it's missing when
-  // `docker compose up` runs first; a later appendFileSync here would then crash
-  // with EISDIR. Touching the file now (even empty) prevents that footgun.
   if (!existsSync('./.env')) writeFileSync('./.env', '', 'utf8')
   if (env) appendFileSync('./.env', env)
   console.log('✅ config.yaml gravado. Rode `npm start` para iniciar. (WhatsApp mostrará o QR no terminal.)')

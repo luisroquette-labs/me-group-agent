@@ -4,7 +4,7 @@ import { dirname } from 'node:path'
 export type Database = BetterSqlite3.Database
 
 export function openDb(file = './data/data.db'): BetterSqlite3.Database {
-  if (file !== ':memory:') mkdirSync(dirname(file), { recursive: true })  // better-sqlite3 won't create the dir
+  if (file !== ':memory:') mkdirSync(dirname(file), { recursive: true })
   return new BetterSqlite3(file)
 }
 

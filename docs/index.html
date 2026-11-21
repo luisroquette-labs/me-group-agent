@@ -46,11 +46,9 @@
 
   .dark{background:var(--ink);color:#fff}
 
-  /* free pill */
   .freepill{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.3px;color:#042b1b;background:var(--free);padding:6px 13px;border-radius:999px}
   .freepill .z{font-family:var(--disp);font-weight:700}
 
-  /* ===== NAV ===== */
   nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
   .brand{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:700;letter-spacing:-.01em}
   .brand svg{width:28px;height:28px;display:block}
@@ -61,7 +59,6 @@
   nav .nav-cta{background:var(--free);color:#042b1b;padding:9px 16px;border-radius:10px;font-weight:600;opacity:1}
   nav .nav-cta:hover{background:#13b672}
 
-  /* ===== HERO ===== */
   .hero{padding:10px 0 84px;position:relative;overflow:hidden;background:
     radial-gradient(900px 480px at 82% 6%, rgba(123,47,190,.40), transparent 62%),
     radial-gradient(700px 400px at 4% 0%, rgba(21,199,124,.12), transparent 58%),
@@ -78,7 +75,6 @@
   .hero .meta span{font-family:var(--mono);font-size:11.5px;color:#CBB8EC;background:rgba(201,167,255,.08);border:1px solid var(--surface-2);padding:6px 11px;border-radius:8px}
   .hero .meta span b{color:var(--teal);font-weight:500}
 
-  /* SIGNATURE thread */
   .thread{background:var(--ink-2);border:1px solid var(--surface-2);border-radius:22px;box-shadow:0 40px 90px -50px rgba(123,47,190,.7);overflow:hidden}
   .thread-top{display:flex;align-items:center;gap:11px;padding:14px 18px;border-bottom:1px solid var(--surface-2);background:linear-gradient(90deg,rgba(123,47,190,.14),transparent)}
   .thread-top .av{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-soft));display:grid;place-items:center;font-family:var(--disp);font-weight:700;font-size:14px;color:#fff}
@@ -100,14 +96,12 @@
   @keyframes rise{to{opacity:1;transform:translateY(0)}}
   .d1{animation-delay:.3s}.d2{animation-delay:1.0s}.d3{animation-delay:1.8s}.d4{animation-delay:2.6s}.d5{animation-delay:3.4s}.d6{animation-delay:4.2s}
 
-  /* ===== LOGOS ===== */
   .logos{padding:30px 0;border-top:1px solid var(--surface-2);background:var(--ink)}
   .logos .row{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
   .logos .cap{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted-light);width:100%;text-align:center;margin-bottom:6px}
   .logos .lg{font-family:var(--disp);font-weight:700;font-size:19px;color:#fff;opacity:.72;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:8px}
   .logos .lg svg{width:20px;height:20px}
 
-  /* ===== sections ===== */
   .section{padding:88px 0}
   .section + .section{border-top:1px solid var(--paper-line)}
   .lede{max-width:620px;margin:0 auto;text-align:center}
@@ -116,7 +110,6 @@
   .lede p{color:var(--muted-dark);font-size:17px}
   .lede.dark p{color:#B9B1CC}
 
-  /* ===== COMPARE (the wedge) ===== */
   .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px;max-width:860px;margin-left:auto;margin-right:auto}
   .col{border-radius:18px;padding:28px}
   .col.them{background:#fff;border:1px solid var(--paper-line)}
@@ -131,7 +124,6 @@
   .col.them li{color:var(--muted-dark)}
   .col.us li{color:#D7F3E6}
 
-  /* ===== behaviors ===== */
   .behaviors{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
   .beh{padding:24px;border:1px solid var(--paper-line);border-radius:18px;background:#fff;transition:border-color .15s,box-shadow .15s}
   .beh:hover{border-color:#DCCDF0;box-shadow:0 18px 50px -34px rgba(123,47,190,.5)}
@@ -144,14 +136,12 @@
   .mini.me .mono{color:#E6D6FF;font-size:12px}
   .mini.chip{align-self:flex-start;background:rgba(54,216,220,.12);border:1px solid rgba(54,216,220,.4);color:#0B7A7D;font-family:var(--mono);font-size:12px}
 
-  /* ===== why free ===== */
   .why{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
   .whycard{padding:26px;border-radius:16px;background:var(--surface);border:1px solid var(--surface-2)}
   .whycard .ic{font-size:22px;margin-bottom:12px}
   .whycard h3{font-size:17px;margin-bottom:8px;color:#fff}
   .whycard p{color:#B9B1CC;font-size:14px}
 
-  /* ===== start ===== */
   .startgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
   .term{background:var(--ink-2);border-radius:18px;overflow:hidden;border:1px solid var(--surface-2);box-shadow:0 30px 70px -45px rgba(0,0,0,.7)}
   .term .bar{display:flex;gap:7px;padding:14px 16px;border-bottom:1px solid var(--surface-2)}
@@ -161,7 +151,6 @@
   .risk{margin-top:26px;border-left:3px solid var(--warn);background:rgba(228,169,59,.07);border-radius:0 12px 12px 0;padding:15px 18px;font-size:13.5px;color:#E9DCC2;max-width:640px}
   .risk b{color:#fff}
 
-  /* ===== faq ===== */
   .faq{max-width:760px;margin:46px auto 0;display:flex;flex-direction:column;gap:12px}
   details{border:1px solid var(--paper-line);border-radius:14px;background:#fff;overflow:hidden}
   details[open]{border-color:#DCCDF0}
@@ -172,7 +161,6 @@
   details .a{padding:0 22px 20px;color:var(--muted-dark);font-size:14.5px;line-height:1.6}
   details .a b{color:var(--txt-dark)}
 
-  /* ===== final ===== */
   .final{text-align:center;padding:92px 0}
   .final h2{font-size:clamp(30px,4.6vw,46px);margin-bottom:12px}
   .final h2 em{font-style:normal;color:var(--free)}
@@ -198,7 +186,6 @@
 </head>
 <body>
 
-<!-- ===================== HERO ===================== -->
 <header class="dark hero">
   <div class="wrap">
     <nav>
@@ -260,7 +247,6 @@
   </div>
 </header>
 
-<!-- ===================== LOGOS ===================== -->
 <section class="logos">
   <div class="wrap">
     <div class="row">
@@ -275,7 +261,6 @@
   </div>
 </section>
 
-<!-- ===================== O QUE FAZ ===================== -->
 <section class="section" id="faz">
   <div class="wrap">
     <div class="lede">
@@ -320,7 +305,6 @@
   </div>
 </section>
 
-<!-- ===================== COMPARE (wedge) ===================== -->
 <section class="section" id="gratis" style="background:var(--paper-2)">
   <div class="wrap">
     <div class="lede">
@@ -353,7 +337,6 @@
   </div>
 </section>
 
-<!-- ===================== POR QUE É GRÁTIS (dark) ===================== -->
 <section class="section dark">
   <div class="wrap">
     <div class="lede dark">
@@ -370,7 +353,6 @@
   </div>
 </section>
 
-<!-- ===================== COMEÇAR ===================== -->
 <section class="section" id="comecar">
   <div class="wrap startgrid">
     <div class="lede left">
@@ -397,7 +379,6 @@
   </div>
 </section>
 
-<!-- ===================== FAQ ===================== -->
 <section class="section" id="faq" style="background:var(--paper-2)">
   <div class="wrap">
     <div class="lede"><span class="eyebrow">Dúvidas</span><h2>Perguntas rápidas</h2></div>
@@ -411,7 +392,6 @@
   </div>
 </section>
 
-<!-- ===================== FINAL ===================== -->
 <section class="section final">
   <div class="wrap">
     <span class="freepill"><span class="z">R$0</span> · sem cartão</span>
