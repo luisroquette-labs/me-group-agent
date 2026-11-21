@@ -1,8 +1,5 @@
 export type KbEntry = { question: string; answer: string; tags: string[] }
 
-// Extract keywords: lowercased, deaccented, ≥3 chars, deduped.
-// Also emits 4-char prefix stems for words ≥4 chars to enable fuzzy overlap
-// (e.g., both "horas" and "horário" yield "hora", allowing related-term matching).
 export function keywords(text: string): string[] {
   const norm = text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
   const words = norm.match(/[a-z0-9]+/g) ?? []
@@ -12,7 +9,6 @@ export function keywords(text: string): string[] {
   for (const w of filtered) {
     kws.add(w)
     if (w.length >= 4) {
-      // ponytail: 4-char prefix stem is a cheap fuzzy match; false positives possible at larger KB scale — upgrade to a real stemmer/Levenshtein if the KB grows.
       kws.add(w.slice(0, 4))
     }
   }

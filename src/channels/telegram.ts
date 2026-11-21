@@ -39,7 +39,7 @@ export class TelegramChannel implements Channel {
 
     this.bot.on('message:new_chat_members', async (ctx) => {
       for (const m of ctx.message.new_chat_members) {
-        if (String(m.id) === this.botId) continue // the bot joining itself isn't a member join
+        if (String(m.id) === this.botId) continue
         const e: MemberJoin = { channel: 'telegram', groupId: String(ctx.chat.id), userId: String(m.id), userName: m.first_name ?? m.username ?? 'membro' }
         for (const handler of this.joinHandlers) await handler(e)
       }
@@ -49,11 +49,9 @@ export class TelegramChannel implements Channel {
   }
 
   async sendText(groupId: string, text: string): Promise<void> { await this.bot.api.sendMessage(Number(groupId), text) }
-  // 'remove' uses ban then unban so the user is kicked but can rejoin (a plain ban is permanent).
   async removeMember(groupId: string, userId: string): Promise<void> {
     await this.bot.api.banChatMember(Number(groupId), Number(userId))
     await this.bot.api.unbanChatMember(Number(groupId), Number(userId))
   }
-  // Telegram deletes by (chat, message) — no author needed, so authorId is ignored.
   async deleteMessage(groupId: string, messageRef: string, _authorId?: string): Promise<void> { await this.bot.api.deleteMessage(Number(groupId), Number(messageRef)) }
 }

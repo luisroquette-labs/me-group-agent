@@ -34,7 +34,6 @@ async function main(): Promise<void> {
     await ch.start()
     console.log(`[ME] channel ${ch.id} started.`)
   }
-  // Scheduler runs ONCE over all channels; it routes each agenda/summary item to its channel.
   startScheduler({ config, repo, channels, apiKey })
   console.log('[ME] running. Press Ctrl+C to stop.')
 }

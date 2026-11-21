@@ -17,7 +17,7 @@ describe('welcome', () => {
     const ch = new FakeChannel('telegram')
     const e = { channel: 'telegram' as const, groupId: 'g', userId: 'u', userName: 'Ana' }
     await handleJoin({ config: cfg(), repo, channel: ch }, e)
-    await handleJoin({ config: cfg(), repo, channel: ch }, e) // second time: already seen
+    await handleJoin({ config: cfg(), repo, channel: ch }, e)
     expect(ch.sent).toHaveLength(1)
     expect(ch.sent[0].text).toContain('Oi Ana')
     expect(ch.sent[0].text).toContain('Regra 1.')

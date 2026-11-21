@@ -11,7 +11,6 @@ export function mentionsBot(text: string, botName: string): boolean {
   const esc = botName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
   return new RegExp(`(^|[^\\p{L}\\p{N}])${esc}([^\\p{L}\\p{N}]|$)`, 'iu').test(text)
 }
-// selfJid may carry a `:device` suffix (e.g. `123:45@s.whatsapp.net`) that jidNormalizedUser strips.
 export function isSelfParticipant(participant: string, selfJid?: string): boolean {
   if (!selfJid) return false
   return jidNormalizedUser(participant) === jidNormalizedUser(selfJid)
@@ -62,7 +61,7 @@ export class WhatsAppChannel implements Channel {
     sock.ev.on('group-participants.update', async (u) => {
       if (u.action !== 'add') return
       for (const participant of u.participants) {
-        if (isSelfParticipant(participant, sock.user?.id)) continue // the bot joining itself isn't a member join
+        if (isSelfParticipant(participant, sock.user?.id)) continue
         const e: MemberJoin = { channel: 'whatsapp', groupId: u.id, userId: participant, userName: participant.split('@')[0] }
         for (const handler of this.joinHandlers) await handler(e)
       }
@@ -72,8 +71,6 @@ export class WhatsAppChannel implements Channel {
   private ensure(): WASocket { if (!this.sock) throw new Error('WhatsApp not started'); return this.sock }
   async sendText(groupId: string, text: string): Promise<void> { await this.ensure().sendMessage(groupId, { text }) }
   async removeMember(groupId: string, userId: string): Promise<void> { await this.ensure().groupParticipantsUpdate(groupId, [userId], 'remove') }
-  // Deleting another member's message in a group requires the author's jid as `participant`
-  // AND the bot being a group admin.
   async deleteMessage(groupId: string, messageRef: string, authorId?: string): Promise<void> {
     await this.ensure().sendMessage(groupId, { delete: { remoteJid: groupId, id: messageRef, participant: authorId, fromMe: false } })
   }

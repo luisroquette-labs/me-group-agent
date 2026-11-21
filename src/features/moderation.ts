@@ -10,7 +10,6 @@ export function extractDomains(text: string): string[] {
   const re = /https?:\/\/([^\s/]+)/gi
   let m: RegExpExecArray | null
   while ((m = re.exec(text))) out.push(m[1].toLowerCase())
-  // also catch bare domains like example.org/aula
   const bare = text.match(/\b([a-z0-9-]+\.)+[a-z]{2,}(\.[a-z]{2,})?\b/gi) ?? []
   for (const b of bare) { const host = b.split('/')[0].toLowerCase(); if (!out.includes(host)) out.push(host) }
   return out

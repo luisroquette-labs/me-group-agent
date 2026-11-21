@@ -25,7 +25,7 @@ describe('handleMessage', () => {
     const chatFn = async (opts: any) => { seenMessages = opts.messages; return 'Começa às 19h!' }
     await handleMessage({ config: cfg(), repo, channel: ch, apiKey: 'k', chatFn }, msg('qual o horário?'))
     expect(ch.sent[0].text).toBe('Começa às 19h!')
-    expect(seenMessages[0].content).toContain('19h') // KB injected
+    expect(seenMessages[0].content).toContain('19h')
   })
   it('stays silent when shouldReply is false', async () => {
     const ch = new FakeChannel('telegram')
@@ -40,8 +40,8 @@ describe('handleMessage', () => {
     const chatFn = async () => { calls++; return 'resp' }
     const cfgCd = () => cfg({ cooldownSeconds: 10 })
     await handleMessage({ config: cfgCd(), repo, channel: ch, apiKey: 'k', chatFn, cooldownStore: store }, msg('oi?', { timestamp: 0 }))
-    await handleMessage({ config: cfgCd(), repo, channel: ch, apiKey: 'k', chatFn, cooldownStore: store }, msg('oi?', { timestamp: 5000 }))   // within 10s -> blocked
-    await handleMessage({ config: cfgCd(), repo, channel: ch, apiKey: 'k', chatFn, cooldownStore: store }, msg('oi?', { timestamp: 12000 }))  // after -> allowed
+    await handleMessage({ config: cfgCd(), repo, channel: ch, apiKey: 'k', chatFn, cooldownStore: store }, msg('oi?', { timestamp: 5000 }))
+    await handleMessage({ config: cfgCd(), repo, channel: ch, apiKey: 'k', chatFn, cooldownStore: store }, msg('oi?', { timestamp: 12000 }))
     expect(calls).toBe(2)
   })
 })
@@ -50,8 +50,8 @@ describe('onCooldown', () => {
   it('blocks within window, allows after, stamps on allow', () => {
     const store = new Map<string, number>()
     const m = (ts: number) => ({ channel: 'telegram' as const, groupId: 'g', userId: 'u', userName: 'U', text: '?', mentionsBot: false, messageRef: 'm', timestamp: ts })
-    expect(onCooldown(store, m(0), 10)).toBe(false)   // first: not on cooldown, stamps
-    expect(onCooldown(store, m(5000), 10)).toBe(true)  // within
-    expect(onCooldown(store, m(11000), 10)).toBe(false) // after, re-stamps
+    expect(onCooldown(store, m(0), 10)).toBe(false)
+    expect(onCooldown(store, m(5000), 10)).toBe(true)
+    expect(onCooldown(store, m(11000), 10)).toBe(false)
   })
 })

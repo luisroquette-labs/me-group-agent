@@ -15,7 +15,6 @@ export function syncKnowledge(repo: Repo, dir = './knowledge'): number {
   return count
 }
 
-// CLI entry (npm run kb:sync)
 import { pathToFileURL } from 'node:url'
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const { openDb, migrate } = await import('../db/schema.js')

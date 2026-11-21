@@ -3,7 +3,6 @@ import { openDb, migrate } from '../src/db/schema.js'
 import { Repo } from '../src/db/repo.js'
 import type { Database } from '../src/db/schema.js'
 
-// Compile-guard: ensure Database type is not a namespace (catches re-export regression)
 const _dbType: Database = openDb(':memory:')
 
 let repo: Repo
